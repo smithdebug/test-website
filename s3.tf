@@ -3,11 +3,11 @@ provider "aws" {
   region = "us-east-1"  # Choose your preferred region
 }
 
-resource "aws_s3_bucket" "test-website-bucket" {
-  bucket = "test-website-bucket-1993"
+resource "aws_s3_bucket" "smith-test-website-1993" {
+  bucket = "smith-test-website-1993"
 
   tags = {
-    Name        = "test-website-bucket-1993"
+    Name        = "smith-test-website-1993"
     Environment = "Labs"
     Owner       = "Platform"
   }
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "test-website-bucket" {
 
 
 resource "aws_s3_bucket_website_configuration" "website_hosting" {
-  bucket = aws_s3_bucket.test-website-bucket.id
+  bucket = aws_s3_bucket.smith-test-website-1993.id
 
   index_document {
     suffix = "index.html"
@@ -25,7 +25,7 @@ resource "aws_s3_bucket_website_configuration" "website_hosting" {
 
 # Make the bucket publicly accessible
 resource "aws_s3_bucket_public_access_block" "public_access" {
-  bucket = aws_s3_bucket.test-website-bucket.id
+  bucket = aws_s3_bucket.smith-test-website-1993.id
 
   block_public_acls       = false
   block_public_policy     = false
@@ -35,7 +35,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 
 # Create a bucket policy to allow public read access
 resource "aws_s3_bucket_policy" "allow_public_access" {
-  bucket = aws_s3_bucket.test-website-bucket.id
+  bucket = aws_s3_bucket.smith-test-website-1993.id
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -44,7 +44,7 @@ resource "aws_s3_bucket_policy" "allow_public_access" {
         Effect    = "Allow"
         Principal = "*"
         Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.test-website-bucket.arn}/*"
+        Resource  = "${aws_s3_bucket.smith-test-website-1993.arn}/*"
       }
     ]
   })
@@ -54,7 +54,7 @@ resource "aws_s3_bucket_policy" "allow_public_access" {
 
 # Upload the HTML file to the bucket
 resource "aws_s3_object" "index_html" {
-  bucket       = aws_s3_bucket.test-website-bucket.id
+  bucket       = aws_s3_bucket.smith-test-website-1993.id
   key          = "index.html"
   source       = "index.html"
   content_type = "text/html"
