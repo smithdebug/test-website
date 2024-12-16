@@ -49,9 +49,6 @@ terraform apply
 
 When prompted, type `yes` to confirm.
 
-## Outputs
-
-After successful deployment, Terraform will output the website endpoint URL.
 
 ## Cleanup
 
