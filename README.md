@@ -9,7 +9,7 @@ This project demonstrates how to deploy a static website on AWS S3 using Terrafo
 Before you begin, ensure you have the following installed:
 
 - AWS CLI
-- Terraform (version 1.0 or later)
+- Terraform 
 - An AWS account with appropriate permissions
 
 ## Project Structure
