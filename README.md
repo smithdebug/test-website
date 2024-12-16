@@ -60,3 +60,26 @@ To remove all resources:
 ```
 terraform destroy
 ```
+
+
+## Potential Future Enhancements
+
+If I had more time to develop this website, I would enhance it with several advanced features and best practices across different AWS services:
+
+### 1. Content Delivery and Performance
+- Implement Amazon CloudFront for global content distribution
+- Add CDN caching to reduce latency
+- Configure SSL/HTTPS with AWS Certificate Manager
+
+ALternative solutions that you could have taken but didn't and why?
+### 1. EC2 instance with Nginx
+- EC2 and Nginx is better for dynamic websites
+- Complex solution for static website hosting
+- Cost efficiency
+
+
+What would be required to make this production grade website
+- I have already used IAC to deploy the s3 bucket and host the website.
+- I would add CDN caching
+- I would add a domain name to access the website instead of using bucket website endpoint
+- I would enable access logging for s3 bucket
